@@ -1,1 +1,2 @@
-{ "mongoURI": "mongodb+srv://Naima:loveisintheair@contactkeeper-cyzib.mongodb.net/test?retryWrites=true&w=majority" }
+{ "mongoURI": "mongodb+srv://Naima:loveisintheair@contactkeeper-cyzib.mongodb.net/test?retryWrites=true&w=majority",
+"jwtSecret" : "secret" }
