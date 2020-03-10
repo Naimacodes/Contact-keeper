@@ -40,8 +40,53 @@ const ContactState = props => {
 
   const [state, dispatch] = useReducer(ContactReducer, initialState);
 
+  //ADD_CONTACT,
+
+
+
+
+  //CLEAR_CURRENT,
+  
+  
+  
+  
+  // CLEAR_FILTER,
+  
+  
+  
+  
+  // UPDATE_CONTACT,
+  
+  
+  
+  
+  //DELETE_CONTACT,
+  
+  
+  
+  
+  //FILTER_CONTACT,
+  
+  
+  
+  
+  //SET_ALERT,
+  
+  
+  
+  
+  //SET_CURRENT,
+  
+  
+  
+  
+  //REMOVE_ALERT
+
+
   return (
-    <ContactContext.Provider value={{}}>
+    <ContactContext.Provider value={{
+      contacts: state.contacts
+    }}>
       {props.children}
     </ContactContext.Provider>
   );
