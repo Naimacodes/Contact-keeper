@@ -20,7 +20,7 @@ export default (state, action) => {
     case CLEAR_CURRENT:
       return {
         ...state,
-        something: action.payload,
+        current: null,
       };
     case CLEAR_FILTER:
       return {
@@ -50,7 +50,7 @@ export default (state, action) => {
     case SET_CURRENT:
       return {
         ...state,
-        something: action.payload,
+        current: action.payload,
       };
     case REMOVE_ALERT:
       return {
