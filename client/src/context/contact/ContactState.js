@@ -47,6 +47,7 @@ const ContactState = props => {
   //ADD_CONTACT,
 
   const addContact= (contact) => {
+    console.log(contact)
     contact.id = uuidv4()
     dispatch({type: ADD_CONTACT, payload: contact})
   }
@@ -67,7 +68,9 @@ const ContactState = props => {
   
   
   // UPDATE_CONTACT,
-  
+  const updateContact= (contact) => {
+    
+    dispatch({type: UPDATE_CONTACT, payload: contact})}
   
   
   
@@ -105,7 +108,8 @@ const ContactState = props => {
       addContact,
       deleteContact,
       clearCurrent,
-      setCurrent
+      setCurrent,
+      updateContact
     }}>
       {props.children}
     </ContactContext.Provider>

@@ -1,7 +1,6 @@
 import React, {useContext} from 'react';
 import PropTypes from 'prop-types'
 import ContactContext from '../../context/contact/contactContext'
-import { CLEAR_CURRENT } from '../../context/types';
 
 const ContactsItem = ({ contact }) => {
   
@@ -12,6 +11,7 @@ const ContactsItem = ({ contact }) => {
   
   const onDelete = (e) => {
     deleteContact(id)
+    clearCurrent()
   }
   
   return (
@@ -43,7 +43,7 @@ const ContactsItem = ({ contact }) => {
         )}
       </ul>
       <p className="btn btn-dark btn-sm" onClick={() => setCurrent(contact)}>Edit</p>
-      <p className="btn btn-danger btn-sm" onClick={onDelete, ()=> clearCurrent() }>Delete</p>
+      <p className="btn btn-danger btn-sm" onClick={onDelete}>Delete</p>
 
     </div>
   );
