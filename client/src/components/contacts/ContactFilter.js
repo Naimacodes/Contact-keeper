@@ -1,12 +1,37 @@
-import React from 'react';
-import ContactContext
+import React, { useContext, useRef, useEffect } from 'react';
+import ContactContext from '../../context/contact/contactContext';
 
 const ContactFilter = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+  const contactContext = useContext(ContactContext);
+  const text = useRef('');
 
-export default ContactFilter
+  useEffect(() => {
+    if (filtered === null) {
+      text.current.value = '';
+    }
+  });
+
+
+
+  const { filterContact, clearFilter, filtered } = contactContext;
+  const onChange = e => {
+    if (text.current.value !== '') {
+      filterContact(e.target.value);
+    } else {
+      clearFilter();
+    }
+  };
+
+  return (
+    <form>
+      <input
+        ref={text}
+        type='text'
+        placeholder='filter contact'
+        onChange={onChange}
+      />
+    </form>
+  );
+};
+
+export default ContactFilter;
