@@ -24,22 +24,22 @@ const Register = () => {
       <form onSubmit = {onSubmit}>
         <div className='form-group'>
           <label htmlFor='name'>Name</label>
-          <input type='text' name='name' value='name' onChange={onChange} />
+          <input type='text' name='name' value={name} onChange={onChange} />
         </div>
 
         <div className='form-group'>
           <label htmlFor='email'>Email</label>
-          <input type='email' name='email' value='email' onChange={onChange} />
+          <input type='email' name='email' value={email} onChange={onChange} />
         </div>
 
         <div className="form-group">
           <label htmlFor="password">Password</label>
-          <input type="password" password="password" value="password" onChange={onChange}/>
+          <input type="password" password="password" value={password} onChange={onChange}/>
         </div>
 
         <div className="form-group">
           <label htmlFor="password2">Password2</label>
-          <input type="password" password2="password2" value="password2" onChange={onChange}/>
+          <input type="password" password2="password2" value={password2 }onChange={onChange}/>
         </div>
 
         <input type="submit" value="Register" className='btn btn-primary btn-block'/>
