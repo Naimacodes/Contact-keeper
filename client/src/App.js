@@ -7,12 +7,14 @@ import Login from './components/auth/Login'
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import ContactState from './context/contact/ContactState';
 import AuthState from './context/auth/AuthState';
+import AlertState from './context/alert/AlertState';
 import './App.css';
 
 function App() {
   return (
     <AuthState>
       <ContactState>
+        <AlertState>
         <Router>
           <Fragment>
             <Navbar />
@@ -27,6 +29,7 @@ function App() {
             </Switch>
           </div>
         </Router>
+        </AlertState>
       </ContactState>
     </AuthState>
   );
