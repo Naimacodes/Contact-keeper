@@ -1,8 +1,8 @@
-import {} from '../types'
+import { REGISTER_SUCCESS } from '../types'
 
 export default (state, action) => {
 switch (action.type) {
-case YOUR_TYPE:
+case REGISTER_SUCCESS:
 return {
 ...state,
 something: action.payload,

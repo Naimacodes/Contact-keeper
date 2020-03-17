@@ -4,7 +4,7 @@ import Home from './components/pages/Home';
 import About from './components/pages/About';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import ContactState from './context/contact/ContactState';
-import AuthState from './context/Auth/AuthState';
+import AuthState from './context/auth/AuthState';
 import './App.css';
 
 function App() {

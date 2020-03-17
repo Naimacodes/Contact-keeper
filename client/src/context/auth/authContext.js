@@ -1,6 +1,6 @@
-import { createContext } from 'React';
+import { createContext } from 'react';
 
-const contactContext = createContext();
+const authContext = createContext();
 
-export default contactContext;
+export default authContext;
  
