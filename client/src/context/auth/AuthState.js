@@ -3,6 +3,7 @@ import AuthReducer from './authReducer';
 import AuthContext from './authContext';
 import axios from 'axios';
 import {
+  REGISTER_SUCCESS,
   REGISTER_FAIL,
   USER_LOADED,
   AUTH_ERROR,
@@ -29,6 +30,26 @@ const AuthState = props => {
 
   // register User
   //sign the user up, get the token back
+
+const register = async formData => {
+  const config = {
+    headers: {
+      'Content-Type' : 'application/json'
+    }
+  }
+  try {
+    const res = await axios.post('/api/users', formData, config)
+    dispatch({type: REGISTER_SUCCESS, payload : res.data })
+    // the response is gonna be the token
+    
+  } catch (error) {
+    dispatch({type: REGISTER_FAIL, payload : error.response.data.msg})
+    
+  }
+}
+
+
+
 
   //Login User
   //Log the user in get the token

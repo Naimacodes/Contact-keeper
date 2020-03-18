@@ -1,9 +1,13 @@
 import React, { useState, useContext } from 'react';
 import AlertContext from '../../context/alert/alertContext';
+import AuthContext from '../../context/auth/authContext';
 
 const Register = () => {
   const alertContext = useContext(AlertContext);
+  const authContext = useContext(AuthContext);
+
   const { setAlert } = alertContext;
+  const { register } = authContext;
   const [user, setUser] = useState({
     name: '',
     email: '',
@@ -61,7 +65,7 @@ const Register = () => {
             value={password}
             onChange={onChange}
             required
-            minLength="6"
+            minLength='6'
           />
         </div>
 
@@ -72,8 +76,7 @@ const Register = () => {
             name='password2'
             value={password2}
             onChange={onChange}
-            
-            minLength="6"
+            minLength='6'
           />
         </div>
 
