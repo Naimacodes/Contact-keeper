@@ -28,6 +28,19 @@ const AuthState = props => {
   // Load User
   //Checks which user logs in , will hit the auth endpoint and get the data
 
+  const loadUser = async () => {
+    //load token into global header
+
+    try {
+      //checks if you're a valid user
+      const res = await axios.get('/api/auth')
+      dispatch({type: USER_LOADED, payload: res.data})
+
+    } catch (error) {
+      dispatch({type: AUTH_ERROR})
+    }
+  }
+
   // register User
   //sign the user up, get the token back
 
@@ -40,7 +53,7 @@ const register = async formData => {
   try {
     const res = await axios.post('/api/users', formData, config)
     dispatch({type: REGISTER_SUCCESS, payload : res.data })
-    // the response is gonna be the token
+    // the response is going to be the token
     
   } catch (error) {
     dispatch({type: REGISTER_FAIL, payload : error.response.data.msg})
@@ -54,11 +67,21 @@ const register = async formData => {
   //Login User
   //Log the user in get the token
 
+
+  const loginUser = () => {console.log('login user')}
+
   // Logout
   // Destroys the token logs the user out
 
+  
+  const logout = () => {console.log('logout')}
+
+
   // Clear Errors
   //clear any errors in the state
+
+
+  const clearErrors = () => {dispatch({type:CLEAR_ERRORS, })}
 
   return (
     <AuthContext.Provider
@@ -67,7 +90,12 @@ const register = async formData => {
         isAuthenticated: state.isAuthenticated,
         login: state.login,
         user: state.user,
-        error: state.error
+        error: state.error,
+        register,
+        loadUser,
+        loginUser,
+        logout,
+        clearErrors
       }}
     >
       {props.children}
