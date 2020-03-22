@@ -18,7 +18,7 @@ export default (state, action) => {
     case GET_CONTACTS:
       return {
         ...state,
-      contacts: [...state.contacts, action.payload],
+      contacts: action.payload,
       loading: false
       };
     case ADD_CONTACT:

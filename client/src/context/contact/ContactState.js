@@ -3,6 +3,7 @@ import ContactContext from './contactContext';
 import contactReducer from './contactReducer';
 import axios from 'axios';
 import {
+  GET_CONTACTS,
   ADD_CONTACT,
   CLEAR_CURRENT,
   CLEAR_FILTER,
@@ -15,7 +16,7 @@ import {
 
 const ContactState = props => {
   const initialState = {
-    contacts: [],
+    contacts: null,
     current: null,
     filtered: null,
     error: null
@@ -26,17 +27,18 @@ const ContactState = props => {
   //GET_CONTACTS
 
   const getContacts = async () => {
-    const config = {
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    };
     try {
       const res = await axios.get('/api/contacts');
-      dispatch({ type: GET_CONTACTS, payload: res.data });
-      console.log(res.data);
-    } catch (error) {
-      dispatch({ type: CONTACT_ERROR, payload: error.response.msg });
+
+      dispatch({
+        type: GET_CONTACTS,
+        payload: res.data
+      });
+    } catch (err) {
+      dispatch({
+        type: CONTACT_ERROR,
+        payload: err.response.msg
+      });
     }
   };
 
@@ -51,10 +53,12 @@ const ContactState = props => {
     try {
       const res = await axios.post('/api/contacts', contact, config);
       dispatch({ type: ADD_CONTACT, payload: res.data });
-      console.log(res.data);
     } catch (error) {
-      dispatch({ type: CONTACT_ERROR, payload: error.response.msg });
+      console.log(error);
+      // dispatch({ type: CONTACT_ERROR, payload: error.response.msg })
+      
     }
+    
   };
 
   //CLEAR_CURRENT,
@@ -106,7 +110,8 @@ const ContactState = props => {
         setCurrent,
         updateContact,
         filterContact,
-        clearFilter
+        clearFilter,
+        getContacts
       }}
     >
       {props.children}
