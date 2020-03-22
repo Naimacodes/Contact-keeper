@@ -10,7 +10,7 @@ import {
   SET_ALERT,
   SET_CURRENT,
   REMOVE_ALERT,
-  CONTACT_ERROR,
+  CONTACT_ERROR
 } from '../types';
 
 export default (state, action) => {
@@ -18,65 +18,78 @@ export default (state, action) => {
     case GET_CONTACTS:
       return {
         ...state,
-      contacts: action.payload,
-      loading: false
+        contacts: action.payload,
+        loading: false
       };
     case ADD_CONTACT:
       return {
         ...state,
-      contacts: [...state.contacts, action.payload],
-      loading: false
+        contacts: [...state.contacts, action.payload],
+        loading: false
       };
     case CLEAR_CURRENT:
       return {
         ...state,
-        current: null,
+        current: null
       };
     case CLEAR_FILTER:
       return {
         ...state,
-        filtered: null,
+        filtered: null
       };
     case UPDATE_CONTACT:
       return {
         ...state,
-        contacts: state.contacts.map(contact => contact.id === action.payload.id ? action.payload : contact),
+        contacts: state.contacts.map(contact =>
+          contact.id === action.payload.id ? action.payload : contact
+        ),
         loading: false
       };
     case DELETE_CONTACT:
       return {
         ...state,
-        contacts: state.contacts.filter(contact => contact.id !== action.payload ),
+        contacts: state.contacts.filter(
+          contact => contact.id !== action.payload
+        ),
         loading: false
+      };
+    case CLEAR_CONTACTS:
+      return {
+        ...state,
+        contacts: null,
+        filtered: null,
+        error: null,
+        current: null
+        
       };
     case FILTER_CONTACT:
       return {
         ...state,
         filtered: state.contacts.filter(contact => {
-          const regex = new RegExp(`${action.payload}`, 'gi')
+          const regex = new RegExp(`${action.payload}`, 'gi');
           return contact.name.match(regex) || contact.email.match(regex);
-          
-      })};
+        })
+      };
     case SET_ALERT:
       return {
         ...state,
-        something: action.payload,
+        something: action.payload
       };
     case SET_CURRENT:
       return {
         ...state,
-        current: action.payload,
+        current: action.payload
       };
     case REMOVE_ALERT:
       return {
         ...state,
-        something: action.payload,
+        something: action.payload
       };
-      case CONTACT_ERROR:
-        return {
-          ...state,
-          error: action.payload
-        };
+    case CONTACT_ERROR:
+      return {
+        ...state,
+        error: action.payload
+      };
 
     default:
       return {
