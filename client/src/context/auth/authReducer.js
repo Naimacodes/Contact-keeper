@@ -15,7 +15,7 @@ export default (state, action) => {
     case USER_LOADED:
       return {
         ...state,
-        isAuthenticated :true,
+        isAuthenticated: true,
         loading: false,
         user: action.payload
       };
@@ -27,7 +27,25 @@ export default (state, action) => {
         isAuthenticated: true,
         loading: false
       };
-      case AUTH_ERROR:
+    case LOGIN_SUCCESS:
+      localStorage.setItem('token', action.payload.token);
+      return {
+        ...state,
+        ...action.payload,
+        isAuthenticated: true,
+        loading: false
+      };
+    case AUTH_ERROR:
+      localStorage.removeItem('token', action.payload.token);
+      return {
+        ...state,
+        token: null,
+        isAuthenticated: false,
+        loading: false,
+        user: null,
+        error: action.payload
+      };
+    case LOGIN_FAIL:
       localStorage.removeItem('token', action.payload.token);
       return {
         ...state,
