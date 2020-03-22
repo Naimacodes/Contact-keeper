@@ -10,6 +10,7 @@ import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import ContactState from './context/contact/ContactState';
 import AuthState from './context/auth/AuthState';
 import AlertState from './context/alert/AlertState';
+import PrivateRoute from './components/routing/Privateroute'
 import './App.css';
 if (localStorage.token){
   setAuthToken(localStorage.token)
@@ -27,7 +28,7 @@ function App() {
             <div className='container'>
               <Alerts />
               <Switch>
-                <Route exact path='/' component={Home}></Route>
+                <PrivateRoute exact path='/' component={Home}></PrivateRoute>
                 <Route exact path='/about' component={About}></Route>
                 <Route exact path='/register' component={Register}></Route>
                 <Route exact path='/login' component={Login}></Route>
