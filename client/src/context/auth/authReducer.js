@@ -33,7 +33,8 @@ export default (state, action) => {
         ...state,
         ...action.payload,
         isAuthenticated: true,
-        loading: false
+        loading: false,
+        error: null
       };
 
     case LOGIN_FAIL:
