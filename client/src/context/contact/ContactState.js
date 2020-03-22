@@ -55,19 +55,15 @@ const ContactState = props => {
       const res = await axios.post('/api/contacts', contact, config);
       dispatch({ type: ADD_CONTACT, payload: res.data });
     } catch (error) {
-      console.log(error);
-      // dispatch({ type: CONTACT_ERROR, payload: error.response.msg })
-      
+      dispatch({ type: CONTACT_ERROR, payload: error.response.msg });
     }
-    
   };
 
+  //CLEAR_CONTACTS,
 
-   //CLEAR_CONTACTS,
-
-   const clearContacts = () => {
+  const clearContacts = () => {
     dispatch({ type: CLEAR_CONTACTS });
-  }; 
+  };
 
   //CLEAR_CURRENT,
 
@@ -87,8 +83,13 @@ const ContactState = props => {
   };
 
   //DELETE_CONTACT,
-  const deleteContact = id => {
-    dispatch({ type: DELETE_CONTACT, payload: id });
+  const deleteContact = async id => {
+    try {
+      const res = await axios.delete(`/api/contacts/${id}`);
+      dispatch({ type: DELETE_CONTACT, payload: id });
+    } catch (error) {
+      dispatch({ type: CONTACT_ERROR, payload: error.response.msg })
+    }
   };
 
   //FILTER_CONTACT,
